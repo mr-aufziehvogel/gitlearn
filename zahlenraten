@@ -1,0 +1,4 @@
+import random
+zufallszahl = random.randrage(0,100)
+input_zahl= int(input("Gib eine Zahl zwischen 0 und 100 ein."))
+print(zufallszahl)
