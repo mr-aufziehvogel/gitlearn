@@ -1,0 +1,10 @@
+Name
+Mail
+Telefonnummer
+Adresse
+
+Anzeigen
+Erstellen
+Bearbeiten
+Löschen
+Beenden
