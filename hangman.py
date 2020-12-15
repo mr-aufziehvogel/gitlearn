@@ -13,6 +13,9 @@ def randomword():
     return myline
 
 def win():
+    clear()
+    print("FEHLVERSUCHE: " + str(mistakes) + "/5\n")
+    print(*solved)
     while True:
         to_continue = input("Gewonnen! Neues Spiel? ")
         if to_continue == "j" or to_continue == "J":
@@ -23,7 +26,7 @@ def win():
 
 def lose():
     while True:
-        to_continue = input("Verloren :( Neues Spiel? ")
+        to_continue = input("Verloren. Das Wort lautet " + word + ". Neues Spiel? ")
         if to_continue == "j" or to_continue == "J":
             newgame()
             break

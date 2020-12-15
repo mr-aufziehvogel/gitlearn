@@ -17,9 +17,9 @@ class Contacts:
 
 def show():
     i = 0
-    for cons in contactlist:
-        print("ID: " + i)
-        print("\nName: " + contactlist[i].name)
+    for _ in contactlist:
+        print("\nID: " + str(i))
+        print("Name: " + contactlist[i].name)
         print("Mail: " + contactlist[i].mail)
         print("Telefon: " + contactlist[i].phone)
         print("Adresse: " + contactlist[i].address)
@@ -43,23 +43,43 @@ def edit():
     print("Mail: " + contactlist[-1].mail)
     print("Telefon: " + contactlist[-1].phone)
     print("Adresse: " + contactlist[-1].address + "\n")
-    while True:
-        which_edit = input("1. Name\n2. Mail\n3. Telefonnummer\n4.Adresse\n")
-        if which_edit == "1"
-            input = ("Neuer Name? ")
-            contactlist[id].name = input
-        elif which_edit == "2"
-            contactlist[id].mail = input
-        elif which_edit == "3"
-            input = ("Neue Telefonnummer? ")
-            contactlist[id].number = input
-        elif which_edit == "4"
-            input = ("Neue Adresse? ")
-            contactlist[id].address = input
+    if contactlist[id] != "":
+        while True:
+            which_edit = input("1. Name\n2. Mail\n3. Telefonnummer\n4.Adresse\n5. Zurück\nAuswahl: ")
+            if which_edit == "1":
+                while True:
+                    id = input("Neuer Name? ")
+                    if id != "":
+                        contactlist[int(id)].name = id
+                        break
+            elif which_edit == "2":
+                id = input("Neue Mail? ")
+                if id != "":
+                    contactlist[int(id)].mail = id
+                    break
+            elif which_edit == "3":
+                id = input("Neue Telefonnummer? ")
+                if id != "":
+                    contactlist[int(id)].phone = id
+                    break
+            elif which_edit == "4":
+                id = input("Neue Adresse? ")
+                if id != "":
+                    contactlist[int(id)].address = id
+                    break
+            elif which_edit == "5":
+                pass
+            break
+    else:
+        print("Dieser Kontakt existiert nicht.")
 
 
 def delete():
-    pass
+    id = input("Welcher Kontakt(ID)? ")
+    try:
+        del contactlist[int(id)]
+    except IndexError:
+        print("Dieser Kontakt existiert nicht.")
 
 while True:
     print("\n1. Anzeigen")
