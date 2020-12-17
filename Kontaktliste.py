@@ -111,7 +111,7 @@ def delete():
     deletename = input("Welcher name? ")
     try:
         cursor.execute(
-            "DELETE FROM employees WHERE name = 'deletename'" 
+            "DELETE FROM employees WHERE name = ?", (deletename, )
         )
     except mariadb.Error as e:
         print(f"Error: {e}")
