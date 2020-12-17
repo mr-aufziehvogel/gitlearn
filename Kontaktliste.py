@@ -43,30 +43,33 @@ def edit():
     print("Mail: " + contactlist[-1].mail)
     print("Telefon: " + contactlist[-1].phone)
     print("Adresse: " + contactlist[-1].address + "\n")
-    if contactlist[id] != "":
+    if contactlist[int(id)] != "":
         while True:
             which_edit = input("1. Name\n2. Mail\n3. Telefonnummer\n4.Adresse\n5. Zurück\nAuswahl: ")
             if which_edit == "1":
                 while True:
-                    id = input("Neuer Name? ")
-                    if id != "":
-                        contactlist[int(id)].name = id
+                    id_name = input("Neuer Name? ")
+                    if id_name != "":
+                        contactlist[int(id)].name = id_name
                         break
             elif which_edit == "2":
-                id = input("Neue Mail? ")
-                if id != "":
-                    contactlist[int(id)].mail = id
-                    break
+                while True:
+                    id_mail = input("Neue Mail? ")
+                    if id_mail != "":
+                        contactlist[int(id)].mail = id_mail
+                        break
             elif which_edit == "3":
-                id = input("Neue Telefonnummer? ")
-                if id != "":
-                    contactlist[int(id)].phone = id
-                    break
+                while True:
+                    id_phone = input("Neue Telefonnummer? ")
+                    if id_phone != "":
+                        contactlist[int(id)].phone = id_phone
+                        break
             elif which_edit == "4":
-                id = input("Neue Adresse? ")
-                if id != "":
-                    contactlist[int(id)].address = id
-                    break
+                while True:
+                    id_address = input("Neue Adresse? ")
+                    if id_address != "":
+                        contactlist[int(id)].address = id_address
+                        break
             elif which_edit == "5":
                 pass
             break
