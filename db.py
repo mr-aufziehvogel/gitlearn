@@ -2,10 +2,6 @@
 import mariadb
 import sys
 
-'SET GLOBAL connect_timeout=86400';
-'SET GLOBAL wait_timeout=86400';
-'SET GLOBAL interactive_timeout=86400'; 
-
 # Connect to MariaDB Platform
 try:
     conn = mariadb.connect(
