@@ -33,19 +33,25 @@ class Contacts:
         self.address = address
 
 def show():
+    cursor.execute("SELECT * FROM employees")
+    myresult = cursor.fetchall()
+    print(myresult)
     i = 0
-    for _ in contactlist:
-        print("\nID: " + str(i))
-        print("Name: " + contactlist[i].name)
-        print("Mail: " + contactlist[i].mail)
-        print("Telefon: " + contactlist[i].phone)
-        print("Adresse: " + contactlist[i].address)
-        i += 1
+    # for _ in contactlist:
+    #     print("\nID: " + str(i))
+    #     print("Name: " + contactlist[i].name)
+    #     print("Mail: " + contactlist[i].mail)
+    #     print("Telefon: " + contactlist[i].phone)
+    #     print("Adresse: " + contactlist[i].address)
+    #     i += 1
 
 def create():
     name = input("Name? ")
     mail = input("Mail? ")
-    phone = input("Telefonnummer? ")
+    while True:
+        phone = input("Telefonnummer? ")
+        if phone.isnumeric() == True:
+            break
     address = input("Adresse? ")
     clear()
     contactlist.append(Contacts(name,mail,phone,address))
@@ -102,12 +108,14 @@ def edit():
 
 
 def delete():
-    id = input("Welcher Kontakt(ID)? ")
+    deletename = input("Welcher name? ")
     try:
-        del contactlist[int(id)]
-    except IndexError:
-        print("Dieser Kontakt existiert nicht.")
-
+        cursor.execute(
+            "DELETE FROM employees WHERE name = 'deletename'" 
+        )
+    except mariadb.Error as e:
+        print(f"Error: {e}")
+    conn.commit() 
 while True:
     print("\n1. Anzeigen")
     print("2. Erstellen")
