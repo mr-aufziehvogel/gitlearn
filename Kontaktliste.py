@@ -1,6 +1,23 @@
 from os import system, name 
+import mariadb
+import sys
 
 contactlist = []
+# database connection code
+try:
+    conn = mariadb.connect(
+        user="root",
+        password="",
+        host="127.0.0.1",
+        port=3306,
+        database="python_db"
+
+    )
+except mariadb.Error as e:
+    print(f"Error connecting to MariaDB Platform: {e}")
+    sys.exit(1)
+# database connection cursor
+cursor = conn.cursor()
 
 def clear(): 
     if name == 'nt': 
@@ -36,6 +53,13 @@ def create():
     print("Mail: " + contactlist[-1].mail)
     print("Telefon: " + contactlist[-1].phone)
     print("Adresse: " + contactlist[-1].address + "\n")
+    try:
+        cursor.execute(
+            "INSERT INTO employees (name,email,telephone,address) VALUES (?, ?, ?, ?)", 
+        (name, mail, phone, address))
+    except mariadb.Error as e:
+        print(f"Error: {e}")
+    conn.commit() 
 
 def edit():
     id = input("Welchen Kontakt bearbeiten? ")

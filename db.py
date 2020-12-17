@@ -9,7 +9,7 @@ try:
         password="",
         host="127.0.0.1",
         port=3306,
-        database="python"
+        database="python_db"
 
     )
 except mariadb.Error as e:
@@ -19,8 +19,9 @@ except mariadb.Error as e:
 # Get Cursor
 cursor = conn.cursor()
 
-first_name = "shams"
-last_name = "sadi"
+first_name = "harry"
+last_name = "potter"
+
 try:
     cursor.execute(
         "INSERT INTO employees (first_name,last_name) VALUES (?, ?)", 
