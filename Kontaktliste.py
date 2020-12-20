@@ -68,43 +68,53 @@ def create():
     conn.commit() 
 
 def edit():
-    id = input("Welchen Kontakt bearbeiten? ")
-    print("\nName: " + contactlist[-1].name)
-    print("Mail: " + contactlist[-1].mail)
-    print("Telefon: " + contactlist[-1].phone)
-    print("Adresse: " + contactlist[-1].address + "\n")
-    if contactlist[int(id)] != "":
-        while True:
-            which_edit = input("1. Name\n2. Mail\n3. Telefonnummer\n4.Adresse\n5. Zurück\nAuswahl: ")
-            if which_edit == "1":
-                while True:
-                    id_name = input("Neuer Name? ")
-                    if id_name != "":
-                        contactlist[int(id)].name = id_name
-                        break
-            elif which_edit == "2":
-                while True:
-                    id_mail = input("Neue Mail? ")
-                    if id_mail != "":
-                        contactlist[int(id)].mail = id_mail
-                        break
-            elif which_edit == "3":
-                while True:
-                    id_phone = input("Neue Telefonnummer? ")
-                    if id_phone != "":
-                        contactlist[int(id)].phone = id_phone
-                        break
-            elif which_edit == "4":
-                while True:
-                    id_address = input("Neue Adresse? ")
-                    if id_address != "":
-                        contactlist[int(id)].address = id_address
-                        break
-            elif which_edit == "5":
-                pass
+    # id = input("Welchen Kontakt bearbeiten? ")
+    # print("\nName: " + contactlist[-1].name)
+    # print("Mail: " + contactlist[-1].mail)
+    # print("Telefon: " + contactlist[-1].phone)
+    # print("Adresse: " + contactlist[-1].address + "\n")
+    # if contactlist[int(id)] != "":
+    #     while True:
+    #         which_edit = input("1. Name\n2. Mail\n3. Telefonnummer\n4.Adresse\n5. Zurück\nAuswahl: ")
+    #         if which_edit == "1":
+    #             while True:
+    #                 id_name = input("Neuer Name? ")
+    #                 if id_name != "":
+    #                     # contactlist[int(id)].name = id_name
+    #                     # break
+    while True:
+        try:
+            old_name = input("Welcher Kontakt?")
+            new_name = input("Neuer Name?")
+            cursor.execute("UPDATE employees SET name=? WHERE name=?", (new_name, old_name, ))
+            conn.commit()
             break
-    else:
-        print("Dieser Kontakt existiert nicht.")
+        except:
+            pass
+    #   (last_name, email))
+    #         elif which_edit == "2":
+    #             while True:
+    #                 id_mail = input("Neue Mail? ")
+    #                 if id_mail != "":
+    #                     contactlist[int(id)].mail = id_mail
+    #                     break
+    #         elif which_edit == "3":
+    #             while True:
+    #                 id_phone = input("Neue Telefonnummer? ")
+    #                 if id_phone != "":
+    #                     contactlist[int(id)].phone = id_phone
+    #                     break
+    #         elif which_edit == "4":
+    #             while True:
+    #                 id_address = input("Neue Adresse? ")
+    #                 if id_address != "":
+    #                     contactlist[int(id)].address = id_address
+    #                     break
+    #         elif which_edit == "5":
+    #             pass
+    #         break
+    # else:
+    #     print("Dieser Kontakt existiert nicht.")
 
 
 def delete():
