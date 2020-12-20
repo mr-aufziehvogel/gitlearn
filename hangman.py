@@ -80,7 +80,7 @@ def newgame():
     word = randomword()
     letters = list(word)
     solved = []
-    for i in range(len(word)):
+    for _ in range(len(word)):
         solved.append("_")
     clear()
     print("FEHLVERSUCHE: " + str(mistakes) + "/5\n")
