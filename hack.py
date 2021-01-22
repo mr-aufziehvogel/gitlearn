@@ -5,14 +5,13 @@ import string
 parser = argparse.ArgumentParser(description='Good luck')
 parser.add_argument("--t", default=1, help="Your guess")
 
-random.seed(16)
-number = random.randint(1,99)
+random.seed(17)
+number = random.randint(0,9)
 
 letter = (random.choice(string.ascii_letters.lower()))
 letter2 = (random.choice(string.ascii_letters.lower()))
 
-pw = letter + str(number) + letter2
-# print(pw)
+pw = letter + str(number)
 
 args = parser.parse_args()
 t = args.t

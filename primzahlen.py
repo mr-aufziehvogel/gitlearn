@@ -1,4 +1,4 @@
-limit = input("which range?")
+limit = input("Which range? ")
 for i in range(int(limit)+1):
     for j in range(2,int(limit)+1):
         if i == j:
